@@ -70,7 +70,7 @@ def step_robot(r: rtb.ERobot, Tep):
     ub = np.r_[r.qdlim[: r.n], 10 * np.ones(6)]
 
     # Solve for the joint velocities dq
-    qd = qp.solve_qp(Q, c, Ain, bin, Aeq, beq, lb=lb, ub=ub, solver='osqp')
+    qd = qp.solve_qp(Q, c, Ain, bin, Aeq, beq, lb=lb, ub=ub, solver='quadprog')
 
     qd = qd[: r.n]
 
